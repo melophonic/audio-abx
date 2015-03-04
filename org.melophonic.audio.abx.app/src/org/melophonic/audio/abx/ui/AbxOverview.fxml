@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="decorationArea" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.melophonic.audio.abx.ui.AbxOverviewController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#newFileSet" text="New" />
+                  <MenuItem mnemonicParsing="false" onAction="#openFileSet" text="Open" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveFileSet" text="Save" />
+              <MenuItem mnemonicParsing="false" onAction="#handleClose" text="Exit" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem fx:id="calculateOffsetsMenuItem" mnemonicParsing="false" onAction="#handleCalculateOffsets" text="Calculate Offsets" />
+                  <MenuItem fx:id="calculateGainMenuItem" mnemonicParsing="false" onAction="#handleCalculateGain" text="Calculate Gain" />
+              </items>
+            </Menu>
+            <Menu fx:id="demoMenu" mnemonicParsing="false" text="Demo">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#openHiResDemo" text="Hi-Res Audio" />
+                  <MenuItem mnemonicParsing="false" onAction="#openGainOffsetDemo" text="Gain/Offset Demo" />
+               </items></Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+         <items>
+            <BorderPane>
+               <center>
+                  <TableView fx:id="audioFileTable" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <columns>
+                        <TableColumn fx:id="idColumn" editable="false" prefWidth="20.0" text="ID" />
+                        <TableColumn fx:id="enabledColumn" prefWidth="27.0" text="✓" />
+                      <TableColumn fx:id="fileColumn" editable="false" prefWidth="553.0" text="File" />
+                      <TableColumn fx:id="gainColumn" prefWidth="100.0" text="Gain" />
+                        <TableColumn fx:id="offsetColumn" prefWidth="100.0" text="Offset" />
+                        <TableColumn fx:id="durationColumn" editable="false" prefWidth="75.0" text="Duration" />
+                    </columns>
+                  </TableView>
+               </center>
+               <bottom>
+                  <GridPane prefHeight="69.0" prefWidth="598.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="55.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <BorderPane fx:id="mediaPane" prefHeight="35.0">
+                           <left>
+                              <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="playButton" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" maxHeight="32.0" maxWidth="32.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#handlePlayPause" prefHeight="32.0" prefWidth="32.0">
+                                       <FlowPane.margin>
+                                          <Insets right="5.0" />
+                                       </FlowPane.margin></Button>
+                                    <Button fx:id="stopButton" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" maxHeight="32.0" maxWidth="32.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#handleStop" prefHeight="32.0" prefWidth="32.0" />
+                                    <CheckBox fx:id="loopCheckbox" ellipsisString="∞" graphicTextGap="0.0" mnemonicParsing="false" text="Loop">
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding></CheckBox>
+                                 </children>
+                              </FlowPane>
+                           </left>
+                           <right>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                 <center>
+                                    <Slider fx:id="volumeSlider" BorderPane.alignment="CENTER" />
+                                 </center>
+                                 <left>
+                                    <Label fx:id="volumeLabel" text="Vol" BorderPane.alignment="CENTER">
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding></Label>
+                                 </left>
+                              </BorderPane>
+                           </right>
+                           <center>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                 <left>
+                                    <Label fx:id="timeLabel" graphicTextGap="0.0" text="0:00" BorderPane.alignment="CENTER">
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </left>
+                                 <center>
+                                    <Slider fx:id="timeSlider" prefWidth="300.0" BorderPane.alignment="CENTER" />
+                                 </center>
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                                 <BorderPane.margin>
+                                    <Insets />
+                                 </BorderPane.margin>
+                              </BorderPane>
+                           </center>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding></BorderPane>
+                        <BorderPane prefHeight="91.0" prefWidth="798.0" GridPane.rowIndex="1">
+                           <left>
+                              <FlowPane fx:id="controlBar" hgap="5.0" prefHeight="36.0" prefWidth="132.0" vgap="5.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#handleAddAudioFile" text="Add" />
+                                    <Button fx:id="removeButton" disable="true" mnemonicParsing="false" onAction="#handleRemoveAudioFile" text="Remove" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </FlowPane>
+                           </left>
+                           <center>
+                              <BorderPane prefHeight="36.0" prefWidth="363.0" BorderPane.alignment="CENTER">
+                                 <center>
+                                    <FlowPane fx:id="sliderPane" alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                       <BorderPane.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </BorderPane.margin>
+                                    </FlowPane>
+                                 </center>
+                                 <left>
+                                    <Label fx:id="startTimeLabel" text="00:00" BorderPane.alignment="CENTER" />
+                                 </left>
+                                 <right>
+                                    <Label fx:id="endTimeLabel" text="00:00" BorderPane.alignment="CENTER" />
+                                 </right>
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                                 <BorderPane.margin>
+                                    <Insets />
+                                 </BorderPane.margin>
+                              </BorderPane>
+                           </center>
+                           <right>
+                              <FlowPane hgap="5.0" prefHeight="36.0" prefWidth="230.0" vgap="5.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="testButton" mnemonicParsing="false" onAction="#handleTest" text="Test!" />
+                                    <ChoiceBox fx:id="modeChoiceBox" prefHeight="26.0" prefWidth="61.0">
+                                       <FlowPane.margin>
+                                          <Insets />
+                                       </FlowPane.margin>
+                                    </ChoiceBox>
+                                    <Label text="Trials" />
+                                    <TextField fx:id="trialsField" prefHeight="26.0" prefWidth="33.0" text="6" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </FlowPane>
+                           </right></BorderPane>
+                     </children>
+                  </GridPane>
+               </bottom>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <bottom>
+                  <BorderPane prefHeight="27.0" prefWidth="798.0" BorderPane.alignment="CENTER">
+                     <right>
+                        <ProgressBar fx:id="progressBar" prefHeight="10.0" prefWidth="200.0" progress="0.0" BorderPane.alignment="CENTER" />
+                     </right>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                     <left>
+                        <Label fx:id="statusLabel" ellipsisString="" BorderPane.alignment="CENTER" />
+                     </left>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                  </BorderPane>
+               </bottom>
+               <center>
+                  <BorderPane fx:id="testPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <center>
+                        <TextFlow fx:id="testResults" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <padding>
+                              <Insets left="10.0" right="5.0" />
+                           </padding>
+                        </TextFlow>
+                     </center>
+                     <top>
+                        <HBox fx:id="testButtonBox" prefHeight="48.0" prefWidth="798.0" spacing="5.0" BorderPane.alignment="CENTER">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <BorderPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </BorderPane.margin>
+                        </HBox>
+                     </top>
+                  </BorderPane>
+               </center>
+            </BorderPane>
+         </items>
+ 
+      </SplitPane>
+   </center>
+</BorderPane>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmi:id="_OaKGE6KqEeSneofk_LvQpg" elementId="org.efxclipse.e4.application" bindingContexts="_OaKGEKKqEeSneofk_LvQpg">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_OaKGFKKqEeSneofk_LvQpg" elementId="org.efxclipse.e4.mainWindow" label="Media Application" x="30" y="30" width="800" height="500">
+    <persistedState key="efx.window.decoration.fxml" value="platform:/plugin/org.melophonic.audio.abx.app/org/melophonic/audio/abx/ui/AbxOverview.fxml"/>
+  </children>
+  <bindingTables xmi:id="_OaKGHqKqEeSneofk_LvQpg" bindingContext="_OaKGEKKqEeSneofk_LvQpg">
+    <bindings xmi:id="_OaKGH6KqEeSneofk_LvQpg" keySequence="M1+O" command="_OaKGEaKqEeSneofk_LvQpg"/>
+    <bindings xmi:id="_OaKGIKKqEeSneofk_LvQpg" keySequence="M1+R" command="_OaKGEqKqEeSneofk_LvQpg"/>
+  </bindingTables>
+  <rootContext xmi:id="_OaKGEKKqEeSneofk_LvQpg" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
+    <children xmi:id="_OaKGIaKqEeSneofk_LvQpg" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
+    <children xmi:id="_OaKGIqKqEeSneofk_LvQpg" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
+  </rootContext>
+  <commands xmi:id="_OaKGEaKqEeSneofk_LvQpg" elementId="media.play" commandName="playMedia"/>
+  <commands xmi:id="_OaKGEqKqEeSneofk_LvQpg" elementId="media.refresh" commandName="refreshMedia"/>
+  <commands xmi:id="_ibk7EKKsEeSneofk_LvQpg" elementId="media.add" commandName="addMedia"/>
+  <commands xmi:id="_ljK-IKKsEeSneofk_LvQpg" elementId="media.remove" commandName="removeMedia"/>
+  <addons xmi:id="_OaKGI6KqEeSneofk_LvQpg" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_OaKGJKKqEeSneofk_LvQpg" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_OaKGJaKqEeSneofk_LvQpg" elementId="org.eclipse.fx.ui.keybindings.e4.service" contributionURI="bundleclass://org.eclipse.fx.ui.keybindings.e4/org.eclipse.fx.ui.keybindings.e4.BindingServiceAddon"/>
+  <addons xmi:id="_OaKGJqKqEeSneofk_LvQpg" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_OaKGJ6KqEeSneofk_LvQpg" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_OaKGKKKqEeSneofk_LvQpg" elementId="org.eclipse.fx.ui.keybindings.e4.model" contributionURI="bundleclass://org.eclipse.fx.ui.keybindings.e4/org.eclipse.fx.ui.keybindings.e4.BindingProcessingAddon"/>
+  <addons xmi:id="_OaKGKaKqEeSneofk_LvQpg" elementId="org.eclipse.e4.ui.workbench.addons.HandlerProcessingAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
+</application:Application>

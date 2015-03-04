@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<abxFileSet>
+    <clip>
+        <endTime>INF</endTime>
+        <startTime>0.0</startTime>
+    </clip>
+    <files>
+        <enabled>true</enabled>
+        <file>naim-test-1-wav-16-44100.wav</file>
+        <gain>1.0</gain>
+        <offset>0.0</offset>
+    </files>
+    <files>
+        <enabled>true</enabled>
+        <file>naim-test-1-wav-16-44100-cropped.wav</file>
+        <gain>1.0</gain>
+        <offset>0.0</offset>
+    </files>
+    <files>
+        <enabled>true</enabled>
+        <file>naim-test-1-wav-16-44100-low-gain.wav</file>
+        <gain>1.0</gain>
+        <offset>0.0</offset>
+    </files>
+</abxFileSet>

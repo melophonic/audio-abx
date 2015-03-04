@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.melophonic.audio.abx</groupId>
+	<artifactId>org.melophonic.audio.abx.core</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>bundle</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<tycho-version>0.22.0</tycho-version>
+		<manifest-location>META-INF</manifest-location>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.melophonic.audio</groupId>
+			<artifactId>audio-util</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.controlsfx</groupId>
+			<artifactId>controlsfx</artifactId>
+			<version>8.20.8</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.5.3</version>
+				<extensions>true</extensions>
+				<configuration>
+					<manifestLocation>${manifest-location}</manifestLocation>
+					<instructions>
+                        <Export-Package>org.melophonic.audio.*,be.tarsos.dsp,be.tarsos.dsp.io.jvm,be.tarsos.dsp.io,com.musicg.fingerprint,com.musicg.wave,com.musicg.wave.extension,gnu.getopt,org.kc7bfi.jflac.*,org.apache.commons.io,org.apache.commons.io.filefilter,org.controlsfx,org.controlsfx.control,org.controlsfx.property.editor,org.controlsfx.control.action</Export-Package>
+                        <Embed-Dependency>audio-util|tarsos-dsp|musicg|jflac-codec|commons-io|controlsfx</Embed-Dependency>
+                        <Embed-Transitive>true</Embed-Transitive>
+						<_failok>true</_failok>
+					</instructions>
+				</configuration>
+				<executions>
+					<execution>
+						<id>bundle-manifest</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>manifest</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.3.1</version>
+					<configuration>
+						<archive>
+							<manifestFile>${manifest-location}/MANIFEST.MF</manifestFile>
+						</archive>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+	</build>
+
+</project>
